@@ -1,17 +1,11 @@
 version: '{build}'
 
+image: Visual Studio 2019 (pbc)
+
 environment:
   CONFIGURATION: Release
 
 install:
-- ps: |
-    Write-Host "Installing WDK 1903 (10.0.18362.1)..." -ForegroundColor Cyan
-    Write-Host "Downloading..."
-    $exePath = "$env:temp\wdksetup.exe"
-    (New-Object Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?linkid=2085767', $exePath)
-    Write-Host "Installing..."
-    cmd /c start /wait $exePath /quiet
-    Remove-Item $exePath
 - git submodule update --init --recursive
 - appveyor AddMessage "Change boot configuration and reboot" -Category Information
 - bcdedit /set testsigning on
