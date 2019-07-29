@@ -17,3 +17,6 @@ build_script:
 - appveyor AddMessage "Reboot complete" -Category Information
 - bcdedit | findstr /i "testsigning"
 - tools\build.bat %CONFIGURATION%
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
