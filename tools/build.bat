@@ -6,7 +6,7 @@ set Configuration=Release
 
 if not X%1==X set Configuration=%1
 
-call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" x64
+call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
 
 cd %~dp0..\build\VStudio
 if exist build\ del /s/q build >nul
